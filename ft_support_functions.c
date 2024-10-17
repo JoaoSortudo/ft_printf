@@ -69,5 +69,23 @@ int	ft_print_unsigned(unsigned int nb)
 	count += ft_print_char((nb % 10) + '0');
 	return (count);
 }
+int ft_print_hex(unsigned long long number, int base, int uppercase) {
+    char *charset;
 
+    // Define o conjunto de caracteres baseado na base e se deve ser maiúsculo
+    if (uppercase) {
+        charset = "0123456789ABCDEF";
+    } else {
+        charset = "0123456789abcdef";
+    }
+
+    int count = 0; // Contador de caracteres impressos
+
+    // Imprime recursivamente os dígitos em ordem
+    if (number >= (unsigned long long)base) {
+        count += ft_print_hex(number / base, base, uppercase); // Chamada recursiva
+    }
+    count += ft_print_char(charset[number % base]); // Imprime o dígito atual
+    return count; // Retorna o número total de caracteres impressos
+}
 int ft_print_void(void *ptr);
