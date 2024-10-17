@@ -39,10 +39,12 @@ int	ft_print_void(void *ptr)
 	unsigned long long	adress;
 	int					count;
 
+	adress = (unsigned long long)ptr;
+	if (adress == 0)
+		return (ft_print_string("(nil)"));
 	count = ft_print_string("0x");
 	if (!ptr)
 		return (count + ft_print_char('0'));
-	adress = (unsigned long long)ptr;
 	count += ft_print_hex(adress, 0);
 	return (count);
 }
