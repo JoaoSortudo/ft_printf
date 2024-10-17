@@ -19,15 +19,15 @@ int	ft_print_conversions(char c, va_list args)
 	else if (c == 's')
 		return (ft_print_string(va_arg(args, char *)));
 	else if (c == 'p')
-		return (0);
+		return (ft_print_void(va_arg(args, void *)));
 	else if (c == 'd' || c == 'i')
 		return (ft_print_nbr(va_arg(args, int)));
 	else if (c == 'u')
 		return (ft_print_unsigned(va_arg(args, int)));
 	else if (c == 'x')
-		return (0);
+		return (ft_print_hex(va_arg(args, unsigned int), 0));
 	else if (c == 'X')
-		return (0);
+		return (ft_print_hex(va_arg(args, unsigned int), 1));
 	else if (c == '%')
 		return (ft_print_char('%'));
 	return (0);
@@ -41,7 +41,7 @@ int	ft_printf(const char *format, ...)
 
 	count = 0;
 	fmt_len = 0;
-	va_start (args, format);
+	va_start(args, format);
 	while (format[count])
 	{
 		if (format[count] == '%')
@@ -53,12 +53,6 @@ int	ft_printf(const char *format, ...)
 			fmt_len += ft_print_char(format[count]);
 		count++;
 	}
-	va_end (args);
+	va_end(args);
 	return (fmt_len);
-}
-
-int	main(void)
-{
-	ft_printf("Oi, eu sou o %%, tudo bem?");
-	return (0);
 }

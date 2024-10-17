@@ -16,10 +16,12 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
+int	ft_printf(const char *format, ...);
 int	ft_print_char(char c);
 int	ft_print_string(char *str);
 int	ft_print_nbr(int nb);
 int	ft_print_void(void *ptr);
 int	ft_print_unsigned(unsigned int nb);
+int	ft_print_hex(unsigned long long number, int uppercase);
 
 #endif
